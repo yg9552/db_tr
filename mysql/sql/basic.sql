@@ -238,3 +238,11 @@ delete from member2 where seq = 0;
 SELECT *FROM member2;
 
 -- commit / rollback
+
+-- 데이터 수정
+UPDATE member2 SET
+	name ="dylan"
+    ,id ="dtlan2"
+where seq = 1;
+
+DROP TABle member2;
