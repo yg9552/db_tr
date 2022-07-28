@@ -216,3 +216,10 @@ ALTER TABLE member2 ADD COLUMN nameEng varchar(45) AFTER name;
 alter table member2 add column ascd varchar(45) after dob;
 alter table member2 add column gsfd int after ascd;
 alter table member2 add column ghfdgfd double after ascd;
+alter table member2 add column Regtime datetime after dob;
+
+-- 컬럼 변경
+ALTER TABLE member2 MODIFY COLUMN nickname text;
+
+-- 컬럼 이름 변경
+ALTER TABLE member2 CHANGE COLUMN nickname nick varchar(45);
