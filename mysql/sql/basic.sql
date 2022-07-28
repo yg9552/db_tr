@@ -203,4 +203,16 @@ INSERT INTO reged_card (
 ENGINE = InnoDB
 ;
 
+-- busan batabase를 사용하겠다
 use busan;
+
+-- 전체 컬럼 조회
+SELECT *FROM member2;
+
+-- 컬럼 추가
+ALTER TABLE member2 ADD COLUMN nickname varchar(45);
+
+ALTER TABLE member2 ADD COLUMN nameEng varchar(45) AFTER name;
+alter table member2 add column ascd varchar(45) after dob;
+alter table member2 add column gsfd int after ascd;
+alter table member2 add column ghfdgfd double after ascd;
