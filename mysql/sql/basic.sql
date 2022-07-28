@@ -223,3 +223,18 @@ ALTER TABLE member2 MODIFY COLUMN nickname text;
 
 -- 컬럼 이름 변경
 ALTER TABLE member2 CHANGE COLUMN nickname nick varchar(45);
+
+-- 컬럼 삭제
+alter table member2 drop column nick;
+alter table member2 drop column ascd;
+alter table member2 drop column ghfdgfd;
+alter table member2 drop column gsfd;
+alter table member2 drop column nameEng;
+alter table member2 drop column Regtime;
+
+-- 컬럼 삭제
+delete from member2 where seq = 0;
+
+SELECT *FROM member2;
+
+-- commit / rollback
