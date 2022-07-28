@@ -1,0 +1,206 @@
+USE busan;
+
+INSERT INTO member (
+	nm
+    ,id
+    ,password
+    ,email
+    ,gender
+    ,dob
+    ,age
+    )
+
+VALUE (
+	"주현영"
+    ,"gusdudwn"
+    ,"7gfdajkl61a"
+    ,"joogus@naver.com"
+    ,2
+    ,19960114
+    ,26
+    );
+    
+    SELECT *FROM member;
+
+SELECT
+	nm,id,password,email,gender,dob,age
+
+FROM member
+WHERE 1=1
+	-- AND seq =2
+	AND email = "rkdrl@naver.com"
+    
+    ;
+
+DROP TABLE member_addr;
+
+INSERT INTO member_addr(
+	addr1
+    ,addr2
+    ,addr3
+    ,addr4
+    ,member_seq
+    )
+
+VALUE (
+	"서울시 관악구 삼성동"
+    ,"서울시 서초구 서초동"
+    ,"서울시 구로구 구로동"
+    ,"성남시 분당구 이매동"
+    ,3
+    )
+    ;
+
+SELECT *FROM member_addr;
+
+INSERT INTO member_tel (
+	tel1
+    ,tel2
+    ,tel3
+    ,tel4
+    ,member_seq
+    )
+    
+    VALUE (
+    010-3333-4444
+    ,010-5414-0411
+    ,031-235-5473
+    ,010-1247-9623
+    ,3
+    );
+
+SELECT *FROM member_tel;
+
+INSERT INTO product(
+	brand
+    ,prodnm
+    ,price
+    ,discount
+    ,reserve
+    ,origin
+    ,delivertcost
+    ,deliveryinfo
+    ,totalstar
+    ,option_size
+    ,option_color
+    )
+VALUE (
+	"apple"
+    ,"아이폰"
+    ,500000
+    ,1
+    ,2000
+    ,"미국"
+    ,2
+    ,2
+    ,5
+    ,3
+    ,1
+    );
+    
+    SELECT *FROM product;
+
+INSERT INTO cart(
+	prod_seq
+    ,member_seq
+    )
+    VALUE (
+		3
+        ,1
+        )
+        ;
+	
+    SELECT *FROM cart;
+    
+INSERT INTO `product_Q&A`(
+	title
+    ,Question
+    ,Regtime
+    ,Answer
+    ,prod_seq
+    ,member_seq
+    )
+VALUE (
+	"정품인가요?"
+    ,"질문"
+    ,20220320125959
+    ,1
+    ,3
+    ,1
+    )
+    ;
+    
+    SELECT *FROM `product_Q&A`;
+    
+INSERT INTO product_review (
+	prod_seq
+    ,member_seq
+    ,star
+    ,title
+    ,contents
+    ,regtime
+    )
+
+VALUE (
+	1
+    ,1
+    ,5
+    ,"맘에들어요"
+    ,"사이즈도 잘맞고 "
+    ,20220728115859
+    )
+    ;
+	
+    SELECT *FROM product_review;
+
+INSERT INTO reged_card (
+	card1
+    ,card2
+    ,card3
+    ,member_seq
+    )
+    
+    VALUE (
+    "1234.5678.9876"
+    ,"6543.2198.7654.3210"
+    ,"9100.4567.4981.7891"
+    ,3
+    );
+    
+    SELECT *FROM reged_card;
+    
+    
+    INSERT INTO purchase(
+		member_seq
+        ,prod_seq
+        ,quantity
+        ,member_addr_seq
+        ,paytype
+        ,reged_card_seq
+        )
+	
+    VALUE (
+		3
+        ,3
+        ,2
+        ,1
+        ,2
+        ,1
+        )
+        ;
+	SELECT *FROM purchase;
+    
+    CREATE TABLE IF NOT EXISTS `busan`.`member2` (
+  `seq` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `id` VARCHAR(45) NULL,
+  `pwd` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `gender` TINYINT NULL,
+  `dob` DATE NULL,
+  `age` INT NULL,
+  PRIMARY KEY (`seq`))
+ENGINE = InnoDB
+;
+
+use busan;
