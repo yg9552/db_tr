@@ -247,5 +247,41 @@ where seq = 1;
 
 DROP TABle member2;
 
-use busan;
-select *from reged_card;
+-- like를 이용한 검색
+SELECT *FROM member
+WHERE 1=1
+-- AND nm like "영%"
+-- AND nm like "%영"
+AND nm like "%영%"
+;
+
+-- 범위를 이용한 찾기
+SELECT *FROM member
+WHERE 1=1
+-- AND gender = 0
+-- and gender > 1 
+-- and gender >= 1
+and gender between 0 and 2
+;
+
+-- null 찾을땐 is를 붙여야함
+SELECT *From member
+WHere 1=1
+And nm is null
+;
+
+-- example
+select * from reged_card
+where 1=1
+and card3 like "%7%"
+;
+
+select * from member_addr
+where 1=1
+and addr1 like "%서울%"
+;
+
+select *from member_addr
+where 1=1 
+and addr3 is null
+;
