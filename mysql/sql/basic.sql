@@ -246,3 +246,6 @@ UPDATE member2 SET
 where seq = 1;
 
 DROP TABle member2;
+
+use busan;
+select *from reged_card;
