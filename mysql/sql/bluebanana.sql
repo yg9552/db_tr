@@ -66,4 +66,11 @@ left join member b on b.seq = a.member_seq
 left join product c on c.seq = a.prod_seq
 ;
 
--- 옵션 목록
+-- 브랜드 목록
+select
+	a.seq,
+    a.product_name,
+    b.brand_name
+from product a
+left join brand b on b.seq = a.brand_seq
+;
