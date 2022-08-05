@@ -1,5 +1,5 @@
 use busan;
--- 통신사
+-- 공통코드
 select
 	a.seq,
     a.name,
@@ -73,4 +73,27 @@ select
     b.brand_name
 from product a
 left join brand b on b.seq = a.brand_seq
+;
+
+-- 리뷰목록
+select
+	a.prod_seq,
+    a.member_seq,
+    a.title,
+    a.Regtime,
+    b.nm,
+    c.product_name
+from product_review a
+left join member b on b.seq = a.member_seq
+left join product c on c.seq = a.prod_seq
+;
+
+-- 장바구니 목록
+select
+	a.seq,
+	b.nm,
+    c.product_name
+from cart a
+left join member b on b.seq = a.member_seq
+left join product c on c.seq = a.prod_seq
 ;
