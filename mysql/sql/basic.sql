@@ -285,3 +285,4 @@ select *from member_addr
 where 1=1 
 and addr3 is null
 ;
+
