@@ -28,7 +28,8 @@ select
     a.id,
 	b.div_addr,
     b.addr,
-    b.addr_detail
+    b.addr_detail,
+    b.zip
 from member a
 left join member_addr b on b.member_seq = a.seq
 ;
@@ -38,9 +39,11 @@ select
     a.nm,
     a.id,
 	b.div_tel,
-    b.tel
+    b.tel,
+    b.tel_company_code
 from member a
 left join member_tel b on b.member_seq = a.seq
+-- join member_tel b on b.member_seq = a.seq
 ;
 
 -- 카드 목록
@@ -60,7 +63,8 @@ select
     a.member_seq,
     b.nm,
     b.id,
-    c.product_name
+    c.product_name,
+    c.option_code
 from purchase a
 left join member b on b.seq = a.member_seq
 left join product c on c.seq = a.prod_seq
@@ -68,7 +72,6 @@ left join product c on c.seq = a.prod_seq
 
 -- 브랜드 목록
 select
-	a.seq,
     a.product_name,
     b.brand_name
 from product a
@@ -97,3 +100,13 @@ from cart a
 left join member b on b.seq = a.member_seq
 left join product c on c.seq = a.prod_seq
 ;
+
+-- 원산지 목록
+select
+    a.nation,
+    b.product_name
+from origin a
+left join product b on b.origin_seq = a.seq
+;
+
+-- 
