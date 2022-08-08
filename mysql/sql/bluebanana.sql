@@ -1,16 +1,16 @@
 use busan;
 -- 공통코드
 select
+	a.cg_seq,
 	a.seq,
     a.name,
-	a.cg_seq,
     b.name
 from cc a
 left join codegroup b on b.seq = a.cg_seq
 ;
 select
 	a.name,
-    a.seq,
+    b.cg_seq,
     b.name,
     b.seq
 from codegroup a
@@ -32,6 +32,7 @@ select
     b.zip
 from member a
 left join member_addr b on b.member_seq = a.seq
+-- join member_addr b on b.member_seq = a.seq
 ;
 -- 전화번호 목록
 select
@@ -55,6 +56,7 @@ select
     b.card
 from member a
 left join reged_card b on b.member_seq = a.seq
+-- inner join reged_card b on b.member_seq = a.seq
 ;
 
 -- 주문 목록
@@ -107,6 +109,7 @@ select
     b.product_name
 from origin a
 left join product b on b.origin_seq = a.seq
+-- inner join product b on b.origin_seq = a.seq
 ;
 
 -- 
