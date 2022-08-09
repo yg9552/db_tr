@@ -160,7 +160,7 @@ from member a
 join member_tel b on b.member_seq = a.seq
 join member_addr c on c.member_seq = a.seq
 where 1=1
-and a.seq = 1
+and a.seq = 2
 ;
 
 -- 주소목록
