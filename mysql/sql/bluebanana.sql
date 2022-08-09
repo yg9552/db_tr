@@ -45,7 +45,7 @@ select
 	a.price,
     a.reserve,
     a.deliveryinfo,
-    a.delivertcost,
+    a.deliverycost,
     a.origin_seq,
     b.nation
 from product a
@@ -102,7 +102,66 @@ where 1=1
 and c.seq = 5
 ;
 
+-- 상품 주문
+select
+	b.product_name
+    ,a.quantity
+    ,b.option_code
+    ,b.price
+    ,b.discount_percent
+    ,deliverycost
+    -- ,c.nm
+    -- ,d.tel
+    -- ,e.addr
+    -- ,e.addr_detail
+    -- ,e.zip
+from purchase a
+join product b on b.seq = a.prod_seq
+-- join member c on c.seq = a.member_seq
+where 1=1
+and b.seq = 1
+;
+-- join member_tel d on d.member_seq = c.seq
+-- join member_addr e on e.member_seq = c.seq 
 
+select
+	b.nm
+    ,c.addr
+    ,c.addr_detail
+    ,c.zip
+    ,d.div_tel
+    ,d.tel
+    ,a.paytype
+    ,e.card
+from purchase a
+join member b on b.seq = a.member_seq
+join member_addr c on c.seq = a.member_seq
+join member_tel d on d.member_seq = b.seq
+join reged_card e on e.member_seq = b.seq
+where 1=1
+and a.seq = 1
+and e.div_reged_card = 2
+;
+
+-- 개인정보수정
+select
+	a.nm
+    ,a.dob
+    ,a.gender_code
+    ,b.div_tel
+    ,b.tel
+	,a.email
+    ,a.email_code
+    ,c.div_addr
+    ,c.addr
+    ,c.addr_detail
+    ,c.zip
+from member a
+join member_tel b on b.member_seq = a.seq
+join member_addr c on c.member_seq = a.seq
+where 1=1
+and a.seq = 1
+;
 
 -- 주소목록
 select
