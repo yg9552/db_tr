@@ -143,6 +143,15 @@ and a.seq = 1
 and e.div_reged_card = 2
 ;
 
+-- 마이페이지
+select
+	a.nm
+	,a.reserve
+from member a
+where 1=1
+and a.seq = 3
+;
+
 -- 개인정보수정
 select
 	a.nm
@@ -157,13 +166,28 @@ select
     ,c.addr_detail
     ,c.zip
 from member a
-join member_tel b on b.member_seq = a.seq
-join member_addr c on c.member_seq = a.seq
+left join member_tel b on b.member_seq = a.seq
+left join member_addr c on c.member_seq = a.seq
 where 1=1
-and a.seq = 2
+and nm like "%강%"
 ;
 
--- 
+-- 주문 내역
+select
+	c.product_name
+	,c.option_code
+    ,a.quantity
+    ,a.paytype
+    ,c.deliverycost
+    ,c.price
+from purchase a
+left join member b on b.seq = a.member_seq
+left join product c on c.seq = a.prod_seq
+where 1=1
+and b.seq = 2
+;
+
+
 
 -- 주소목록
 select
@@ -207,18 +231,7 @@ left join reged_card b on b.member_seq = a.seq
 -- inner join reged_card b on b.member_seq = a.seq
 ;
 
--- 주문 목록
-select
-	a.prod_seq,
-    a.member_seq,
-    b.nm,
-    b.id,
-    c.product_name,
-    c.option_code
-from purchase a
-left join member b on b.seq = a.member_seq
-left join product c on c.seq = a.prod_seq
-;
+
 
 -- 브랜드 목록
 select
