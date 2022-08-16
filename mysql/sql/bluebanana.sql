@@ -32,11 +32,10 @@ and password = "a123456"
 
 -- 메인.베스트상품
 select
-	a.product_name,
-    a.price,
-    b.seq
+	a.product_name
+    ,a.price
+    ,a.bestNy
 from product a
-join best_products b on b.product_seq = a.seq
 ;
 
 -- 상품정보
@@ -99,8 +98,22 @@ from `product_Q&A` a
 join member b on b.seq = a.member_seq
 join product c on c.seq = a.prod_seq
 where 1=1
-and c.seq = 5
+and b.seq = 1
 ;
+
+-- 상품 Q&A 2
+select
+	a.AnswerNY
+    ,a.Question
+    ,a.Regtime
+    ,b.id
+    ,(select product_name from product c where c.seq = a.prod_seq) as product_nm
+from `product_Q&A` a
+join member b on b.seq = a.member_seq
+where 1=1
+and b.seq = 1
+;
+
 
 -- 상품 주문
 select
@@ -168,8 +181,10 @@ select
 from member a
 left join member_tel b on b.member_seq = a.seq
 left join member_addr c on c.member_seq = a.seq
-where 1=1
-and nm like "%강%"
+order by
+	a.nm desc
+-- where 1=1
+-- and nm like "%강%"
 ;
 
 -- 주문 내역
@@ -183,11 +198,11 @@ select
 from purchase a
 left join member b on b.seq = a.member_seq
 left join product c on c.seq = a.prod_seq
-where 1=1
-and b.seq = 2
+-- where 1=1
+-- and b.seq = 2
+order by
+	c.product_name desc
 ;
-
-
 
 -- 주소목록
 select
@@ -229,9 +244,10 @@ select
 from member a
 left join reged_card b on b.member_seq = a.seq
 -- inner join reged_card b on b.member_seq = a.seq
+
+order by
+	a.nm
 ;
-
-
 
 -- 브랜드 목록
 select
