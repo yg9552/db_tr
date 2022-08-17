@@ -36,6 +36,8 @@ select
     ,a.price
     ,a.bestNy
 from product a
+where 1=1
+and a.bestNy = 1
 ;
 
 -- 상품정보
