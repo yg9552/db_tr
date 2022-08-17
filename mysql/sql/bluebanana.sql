@@ -124,7 +124,7 @@ select
     ,b.option_code
     ,b.price
     ,b.discount_percent
-    ,deliverycost
+    ,b.deliverycost
     -- ,c.nm
     -- ,d.tel
     -- ,e.addr
@@ -291,4 +291,24 @@ left join product b on b.origin_seq = a.seq
 -- inner join product b on b.origin_seq = a.seq
 ;
 
--- 
+-- union
+select
+	a.seq
+    ,a.nm
+    ,a.id
+    ,b.div_tel
+    ,b.tel
+from member a
+left join member_tel b on b.member_seq = a.seq
+-- union all
+union
+select
+	a.seq
+    ,a.nm
+    ,a.id
+    ,b.div_addr
+    ,b.addr
+from member a
+left join member_addr b on b.member_seq = a.seq
+
+;
