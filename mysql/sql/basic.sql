@@ -1,19 +1,5 @@
 USE busan;
 
-CREATE TABLE IF NOT EXISTS `busanproduct_upload`.`product_upload` (
-  `seq` INT NOT NULL AUTO_INCREMENT,
-  `type` TINYINT NULL,
-  `defaultNy` TINYINT NULL,
-  `sort` INT NULL,
-  `originalName` VARCHAR(45) NULL,
-  `uuidName` VARCHAR(45) NULL,
-  `ext` VARCHAR(45) NULL,
-  `size` INT NULL,
-  `delNy` TINYINT NOT NULL,
-  `pseq` INT NOT NULL,
-  PRIMARY KEY (`seq`))
-ENGINE = InnoDB
-;
 
 INSERT INTO member (
 	nm
