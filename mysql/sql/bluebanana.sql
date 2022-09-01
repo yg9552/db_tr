@@ -2,12 +2,11 @@ use busan;
 
 -- 공통코드
 select
-	a.cg_seq,
-	a.seq,
-    a.name,
-    b.name
+	a.cg_seq
+	,a.seq
+    ,a.name
+    ,(select name from CodeGroup aa where aa.seq = a.cg_seq) as codegroupNM
 from Code a
-left join CodeGroup b on b.seq = a.cg_seq
 ;
 
 -- 공통코드2
@@ -16,8 +15,8 @@ select
     b.cg_seq,
     b.name,
     b.seq
-from codegroup a
-left join cc b on b.cg_seq = a.seq
+from CodeGroup a
+left join Code b on b.cg_seq = a.seq
 ;
 
 -- 로그인
