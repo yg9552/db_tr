@@ -6,8 +6,8 @@ select
 	a.seq,
     a.name,
     b.name
-from cc a
-left join codegroup b on b.seq = a.cg_seq
+from Code a
+left join CodeGroup b on b.seq = a.cg_seq
 ;
 
 -- 공통코드2
