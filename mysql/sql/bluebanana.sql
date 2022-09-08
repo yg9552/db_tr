@@ -38,21 +38,43 @@ from product a
 where 1=1
 and a.bestNy = 1
 ;
+SELECT
+			a.seq
+		    ,a.product_name
+		    ,(select name from Code aa WHERE 1=1 AND a.brand_code = aa.seq) as brandMFC
+		    ,a.price
+		    ,a.discount_percent
+		    ,a.reserve
+		    ,a.origin_seq
+		    ,a.deliverycost
+		    ,a.deliveryinfo
+		    ,a.option_code
+		    ,a.newNy
+		    ,a.bestNy
+		FROM product a
+        ;
+
 
 -- 상품정보
 select
-	a.product_name,
-	a.price,
-    a.reserve,
-    a.deliveryinfo,
-    a.deliverycost,
-    a.origin_seq,
-    b.nation
+	a.seq
+	,a.product_name
+	,a.price
+    ,a.reserve
+    ,a.deliveryinfo
+    ,a.deliverycost
+    ,a.origin_seq
+    ,a.newNy
+    ,a.bestNy
+    ,(select nation from origin aa WHERE 1=1 AND a.origin_seq = aa.seq) as nation
+    ,b.name
+    ,b.seq
 from product a
-join origin b on b.seq = a.origin_seq
-where 1=1
-and product_name like "%더블%"
-;
+left join Code b on b.seq = a.brand_code
+-- left join CodeGroup c on c.seq = b.cg_seq
+where 1=1;
+-- and product_name like "%더블%"
+
 
 -- 상품 상세정보
 select
