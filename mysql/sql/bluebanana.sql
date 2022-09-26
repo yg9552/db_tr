@@ -249,12 +249,16 @@ select
     ,a.id
     ,b.div_tel
     ,b.tel
-    ,c.name
+    ,c.div_addr
+    ,c.addr
 from member a
 left join member_tel b on b.member_seq = a.seq
+left join member_addr c on b.member_seq = a.seq
 -- join member_tel b on b.member_seq = a.seq
 -- left join cc c on c.seq = b.tel_company_code
-join cc c on c.seq = b.tel_company_code
+WHERE 1=1
+and tel_defaultNy = 1
+and addr_defaultNy = 1
 ;
 
 -- 카드 목록
