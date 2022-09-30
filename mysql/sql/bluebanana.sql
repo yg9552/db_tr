@@ -152,7 +152,7 @@ select
     -- ,e.addr_detail
     -- ,e.zip
 from purchase a
-join product b on b.seq = a.prod_seq
+join product b on b.seq = a.product_seq
 -- join member c on c.seq = a.member_seq
 where 1=1
 and b.seq = 1
@@ -212,7 +212,8 @@ order by
 
 -- 주문 내역
 select
-	c.product_name
+	b.nm
+	,c.product_name
 	,c.option_code
     ,a.quantity
     ,a.paytype
@@ -237,9 +238,9 @@ select
     b.addr_detail,
     b.zip
 from member a
-left join member_addr b on b.member_seq = a.seq
+left join memberAddr b on b.member_seq = a.seq
 -- join member_addr b on b.member_seq = a.seq
-where nm = "송강호"
+-- where nm = "송강호"
 ;
 
 -- 전화번호 목록
@@ -263,17 +264,17 @@ and addr_defaultNy = 1
 
 -- 카드 목록
 select
-	a.seq,
-    a.nm,
-    a.id,
-    b.div_reged_card,
-    b.card
-from member a
-left join reged_card b on b.member_seq = a.seq
--- inner join reged_card b on b.member_seq = a.seq
+	b.seq,
+    b.nm,
+    b.id,
+    a.div_memberCard,
+    a.card
+from memberCard a
+left join member b on a.member_seq = b.seq
+-- inner join member b on a.member_seq = b.seq
 
 order by
-	a.nm
+	b.nm
 ;
 
 -- 브랜드 목록
