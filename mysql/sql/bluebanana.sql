@@ -336,5 +336,60 @@ select
     ,b.addr
 from member a
 left join member_addr b on b.member_seq = a.seq
-
 ;
+
+-- index 검색의 속도를 향상
+
+SHOW INDEX FROM cart;
+SHOW INDEX FROM brand;
+
+CREATE INDEX abc on brand (seq, brand_name);
+
+ALTER TABLE brand DROP INDEX abc;
+
+-- view 가상테이블
+
+CREATE view cartV
+as
+SELECT
+	a.cartSeq
+	,a.memberSeq
+	,a.productSeq
+	,a.DelNy
+	,b.id
+	,b.nm
+	,c.product_name
+	,c.price
+	,c.discount_percent
+	,c.deliverycost
+FROM cart a
+		left join member b on a.memberSeq = b.memberSeq
+		left join product c on a.productSeq = c.productSeq
+		WHERE 1=1
+;
+SELECT * FROM cartV;
+
+-- trigger
+
+-- function
+DELIMITER $$
+CREATE FUNCTION getname (
+seq bigint
+) 
+RETURNS varchar(100)
+BEGIN
+	
+    declare rtName varchar(100);
+
+	select
+		product_name into rtName
+	from
+		product
+	where 1=1
+		AND productSeq = seq
+	;
+
+	RETURN rtName;
+END$$
+DELIMITER ;
+
