@@ -382,14 +382,15 @@ BEGIN
     declare rtName varchar(100);
 
 	select
-		product_name into rtName
+		brand_name into rtName
 	from
-		product
+		brand
 	where 1=1
-		AND productSeq = seq
+		AND seq = seq
 	;
 
 	RETURN rtName;
 END$$
 DELIMITER ;
+
 
